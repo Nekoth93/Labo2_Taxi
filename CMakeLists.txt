@@ -3,4 +3,4 @@ project(Labo2_Taxi)
 
 set(CMAKE_CXX_STANDARD 20)
 
-add_executable(Labo2_Taxi main.cpp)
+add_executable(Labo2_Taxi main_labo2_Deletraz_Ristic.cpp)
