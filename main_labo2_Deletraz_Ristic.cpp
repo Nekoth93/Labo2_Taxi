@@ -17,8 +17,6 @@
 
 using namespace std;
 
-
-
 int main() {
 
    const float PRISE_EN_CHARGE = 5.0f;
@@ -26,6 +24,8 @@ int main() {
 
    cout << "Bonjour ce programme calculera le prix d'une course de " << endl
         << "Taxi."                                                   << endl;
+
+   cout << "Les taxis sont cool" <<endl;
 
 
 
