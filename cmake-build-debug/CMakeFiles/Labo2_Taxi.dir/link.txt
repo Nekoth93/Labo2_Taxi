@@ -1,0 +1,3 @@
+"C:\Program Files\JetBrains\CLion 2022.2.3\bin\cmake\win\bin\cmake.exe" -E rm -f CMakeFiles\Labo2_Taxi.dir/objects.a
+C:\PROGRA~1\JETBRA~1\CLION2~1.3\bin\mingw\bin\ar.exe qc CMakeFiles\Labo2_Taxi.dir/objects.a @CMakeFiles\Labo2_Taxi.dir\objects1.rsp
+C:\PROGRA~1\JETBRA~1\CLION2~1.3\bin\mingw\bin\G__~1.EXE -Wall -Wextra -Wconversion -Wsign-conversion -pedantic -g -Wl,--whole-archive CMakeFiles\Labo2_Taxi.dir/objects.a -Wl,--no-whole-archive -o Labo2_Taxi.exe -Wl,--out-implib,libLabo2_Taxi.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\Labo2_Taxi.dir\linklibs.rsp
