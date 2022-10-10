@@ -1,4 +1,4 @@
-# Install script for directory: C:/Users/ChrisPC/Downloads/Cours/prog/git/Labo2_Taxi
+# Install script for directory: C:/Users/P51/OneDrive/Alexandre/Etudes/Heig/2022-2023/Prg1/Labo/Labo2_Taxi/Labo2_Taxi
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -34,7 +34,7 @@ endif()
 
 # Set default install directory permissions.
 if(NOT DEFINED CMAKE_OBJDUMP)
-  set(CMAKE_OBJDUMP "C:/Program Files/JetBrains/CLion 2022.2.3/bin/mingw/bin/objdump.exe")
+  set(CMAKE_OBJDUMP "C:/Program Files (x86)/mingw64/bin/objdump.exe")
 endif()
 
 if(CMAKE_INSTALL_COMPONENT)
@@ -45,5 +45,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "C:/Users/ChrisPC/Downloads/Cours/prog/git/Labo2_Taxi/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "C:/Users/P51/OneDrive/Alexandre/Etudes/Heig/2022-2023/Prg1/Labo/Labo2_Taxi/Labo2_Taxi/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
