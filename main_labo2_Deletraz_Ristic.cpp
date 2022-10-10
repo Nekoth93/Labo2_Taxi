@@ -23,10 +23,17 @@ using namespace std;
 
 int main()
 {
+    //-------------------------------------------------------------------
+    //                  Déclaration des constantes
+    //-------------------------------------------------------------------
     const float PRISE_EN_CHARGE    = 5.0f;
     const float TAXE_DE_BAGAGE     = 2.60f;
     const float TARIF_MINUTE_JOUR  = 1.0f;
-    const float TARIF_MINUTE_NUIT  = 1.6f;float nbreBagage;
+    const float TARIF_MINUTE_NUIT  = 1.6f;
+
+    //-------------------------------------------------------------------
+    //                  Affichage du début du programme
+    //-------------------------------------------------------------------
 
     int   precision = 2;  // paramètre pour afficher 2 chiffres après la virgule
     int   nbreCara  = 18; // plus grand nombre de caractères pour une condition.
@@ -38,29 +45,40 @@ int main()
          << "==========================="                                   << endl
 
          << fixed << setprecision(precision)
-
-         << setw(nbreCara) << "- prise en charge" << " : "  << PRISE_EN_CHARGE   <<
+         << left
+         << setw(nbreCara) << "- prise en charge"  << " : "  << PRISE_EN_CHARGE  <<
          endl
-         << setw(nbreCara) << "- supp par bagage " << " : " << TAXE_DE_BAGAGE    <<
+         << setw(nbreCara) << "- supp par bagage"  << " : " << TAXE_DE_BAGAGE    <<
          endl
          << setw(nbreCara) << "- tarif/min (jour)" << " : " << TARIF_MINUTE_JOUR <<
          endl
          << setw(nbreCara) << "- tarif/min (nuit)" << " : " << TARIF_MINUTE_NUIT <<
          endl
-         << setw(nbreCara) << "- heures de jour  " << " : [8-20]" << endl
+         << setw(nbreCara) << "- heures de jour"   << " : [8-20]" << endl
          << endl << endl;
 
+    //-------------------------------------------------------------------
+    //                  Bloc des saisies utilisateur
+    //-------------------------------------------------------------------
+
     // affichage et entrées pour la commande
+    float nbreBagage;
     float distanceKm;
     float vitesseKmh;
     int   departHeure;
+    int   nbreCarCommande = 18;  // plus grand nombre de caractères pour la commande.
+    int   nbreCarInterval = 11;  // nombre de caractères pour afficher l'intervalle.
+    int   nbreCarPoint    = 3;   // nombre de caractères pour les deux points.
 
-    cout << "Votre commande" << endl
-         << "==============" << endl
-         << "- nbre de bagage   [0 - 4] : ";
+    //Le left suivant n'est pas nécessaire, mais par esthétisme avec le right
+    // de la ligne suivante, nous l'avons ajouté.
+    cout << "Votre commande"   << endl
+         << "=============="   << endl
+         << left               << setw(nbreCarCommande) << "- nbre de bagage"
+         << right              << setw(nbreCarInterval) << "[0 - 4]"
+         << setw(nbreCarPoint) << " :";
     cin  >> nbreBagage;
     VIDER_BUFFER;
-    //cout << endl;
 
     // vérification de la valeur, si incorrecte, message d'erreur et interruption du
     // programme
@@ -71,10 +89,11 @@ int main()
         return EXIT_FAILURE;
     }
 
-    cout << "- distance [km]    [0 - 500] : ";
+    cout << left               << setw(nbreCarCommande) << "- distance [km]"
+         << right              << setw(nbreCarInterval) << "[0 - 500]"
+         << setw(nbreCarPoint) << " :";
     cin  >> distanceKm;
     VIDER_BUFFER;
-    //cout << endl;
 
     if(distanceKm < 0 || distanceKm > 500)
     {
@@ -82,17 +101,21 @@ int main()
         return EXIT_FAILURE;
     }
 
-    cout << "- vitesse [km/h]  [50 - 120] : ";
+    cout << left               << setw(nbreCarCommande) << "- vitesse [km/h]"
+         << right              << setw(nbreCarInterval) << "[50 - 120]"
+         << setw(nbreCarPoint) << " :";
     cin  >> vitesseKmh;
     VIDER_BUFFER;
-   // cout << endl;
 
-    cout << "- depart              [0 - 23] : ";
+    cout << left               << setw(nbreCarCommande) << "- depart"
+         << right              << setw(nbreCarInterval) << "[0 - 23]"
+         << setw(nbreCarPoint) << " :";
     cin  >> departHeure;
     VIDER_BUFFER;
-    //cout << endl;
 
-
+    //-------------------------------------------------------------------
+    //             Bloc de calcul et affichage ticket final
+    //-------------------------------------------------------------------
     //Affichage de la course
 
     double prixBagage     = nbreBagage * TAXE_DE_BAGAGE;
@@ -101,22 +124,35 @@ int main()
                             TARIF_MINUTE_JOUR : TARIF_MINUTE_NUIT :
                             TARIF_MINUTE_NUIT) * distanceKm;
     double total          = prixCourse + prixBagage + PRISE_EN_CHARGE;
-    int    nbreCaraTicket = 16; // plus grand nombre de caractères du ticket.
+    int    nbreCarTicket  = 20; // plus grand nombre de caractères du ticket.
+    int    nbreCarResult  = 5;  // nombre de caractères pour les totaux.
 
-    cout << "Votre ticket"                                    << endl
-         << "============"                                    << endl
-         << setw(nbreCaraTicket) << "- Prise en charge"       << " : "
-         << PRISE_EN_CHARGE                                   << endl
-         << setw(nbreCaraTicket) << "- supp bagages"          << " : "
-         << prixBagage                                        << endl
-         << setw(nbreCaraTicket) << "- prix de la course"     << " : "
-         << prixCourse                                        << endl
-         << "TOTAL : "           << total                     << endl
+    cout << "Votre ticket"                                 << endl
+         << "============"                                 << endl
+         << left
+         << setw(nbreCarTicket)  << "- Prise en charge"
+         << right
+         << setw(nbreCarPoint)   << " : "
+         << setw(nbreCarResult)  << PRISE_EN_CHARGE        << endl
+         << left
+         << setw(nbreCarTicket)  << "- supp bagages"
+         << right
+         << setw(nbreCarPoint)   << " : "
+         << setw(nbreCarResult)  << prixBagage             << endl
+         << left
+         << setw(nbreCarTicket)  << "- prix de la course"
+         << right
+         << setw(nbreCarPoint)   << " : "
+         << setw(nbreCarResult)  << prixCourse             << endl
+         << "TOTAL : "           << total                  << endl
          << endl;
 
+    //-------------------------------------------------------------------
+    //                          Fin du programme
+    //-------------------------------------------------------------------
     cout << "Merci d'avoir utiliser notre service."                 << endl
          << "Veuillez appuyer sur enter pour quitter le programme." << endl;
-
     VIDER_BUFFER;
+
     return EXIT_SUCCESS;
 }
