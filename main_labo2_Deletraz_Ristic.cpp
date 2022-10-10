@@ -54,10 +54,25 @@ int main()
     cin  >> nbreBagage;
     cin.ignore(numeric_limits<streamsize>::max(), '\n'); // vide le buffer
 
+    // vérification de la valeur, si incorrecte, message d'erreur et interruption du
+    // programme
+
+    if(nbreBagage < 0 || nbreBagage > 4)
+    {
+        cout << "Nombre " << nbreBagage << " est hors champ";
+        return EXIT_FAILURE;
+    }
+
     cout << endl
          << "- distance [km]    [0 - 500] : ";
     cin  >> distanceKm;
     cin.ignore(numeric_limits<streamsize>::max(), '\n');
+
+    if(distanceKm < 0 || distanceKm > 500)
+    {
+        cout << "Nombre " << distanceKm << " est hors champ";
+        return EXIT_FAILURE;
+    }
 
     cout << endl
          << "- vitesse [km/h]  [50 - 120] : ";
@@ -68,6 +83,12 @@ int main()
          << "depart              [0 - 23] : ";
     cin  >> departHeure;
     cin.ignore(numeric_limits<streamsize>::max(), '\n');
+
+    //Affichage de la course
+
+
+
+
 
 
 
