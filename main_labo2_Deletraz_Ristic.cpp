@@ -122,7 +122,7 @@ int main()
     double prixCourse     = (departHeure < 20 ?
                             8 < departHeure ?
                             TARIF_MINUTE_JOUR : TARIF_MINUTE_NUIT :
-                            TARIF_MINUTE_NUIT) * distanceKm;
+                            TARIF_MINUTE_NUIT) * ((distanceKm / vitesseKmh) * 60);
     double total          = prixCourse + prixBagage + PRISE_EN_CHARGE;
     int    nbreCarTicket  = 20; // plus grand nombre de caractères du ticket.
     int    nbreCarResult  = 5;  // nombre de caractères pour les totaux.
