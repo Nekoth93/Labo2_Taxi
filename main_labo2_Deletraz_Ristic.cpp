@@ -82,7 +82,6 @@ int main()
 
     // vérification de la valeur, si incorrecte, message d'erreur et interruption du
     // programme
-
     if(nbreBagage < 0 || nbreBagage > 4)
     {
         cout << "Nombre " << nbreBagage << " est hors champ";
@@ -107,13 +106,27 @@ int main()
     cin  >> vitesseKmh;
     VIDER_BUFFER;
 
+   if(vitesseKmh < 50 || vitesseKmh > 120)
+   {
+      cout << "Nombre " << vitesseKmh << " est hors champ";
+      return EXIT_FAILURE;
+   }
+
     cout << left               << setw(nbreCarCommande) << "- depart"
          << right              << setw(nbreCarInterval) << "[0 - 23]"
          << setw(nbreCarPoint) << " :";
     cin  >> departHeure;
     VIDER_BUFFER;
 
-    //-------------------------------------------------------------------
+    if(departHeure < 0 || departHeure > 23)
+    {
+       cout << "Nombre " << departHeure << " est hors champ";
+       return EXIT_FAILURE;
+    }
+
+
+
+   //-------------------------------------------------------------------
     //             Bloc de calcul et affichage ticket final
     //-------------------------------------------------------------------
     //Affichage de la course
