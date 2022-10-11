@@ -35,8 +35,8 @@ int main()
     //                  Affichage du début du programme
     //-------------------------------------------------------------------
 
-    int   precision = 2;  // paramètre pour afficher 2 chiffres après la virgule
-    int   nbreCara  = 18; // plus grand nombre de caractères pour une condition.
+    const int precision = 2;  // paramètre pour afficher 2 chiffres après la virgule
+    const int nbreCara  = 18; // plus grand nombre de caractères pour une condition.
 
     // affichage de la carte de course d'un taxi
 
@@ -66,9 +66,9 @@ int main()
     float distanceKm;
     float vitesseKmh;
     int   departHeure;
-    int   nbreCarCommande = 18;  // plus grand nombre de caractères pour la commande.
-    int   nbreCarInterval = 11;  // nombre de caractères pour afficher l'intervalle.
-    int   nbreCarPoint    = 3;   // nombre de caractères pour les deux points.
+    const int   nbreCarCommande = 18;  // nombre de caractères pour la commande.
+    const int   nbreCarInterval = 11;  // nombre de caractères pour l'intervalle.
+    const int   nbreCarPoint    = 3;   // nombre de caractères pour les deux points.
 
     //Le left suivant n'est pas nécessaire, mais par esthétisme avec le right
     // de la ligne suivante, nous l'avons ajouté.
@@ -106,11 +106,11 @@ int main()
     cin  >> vitesseKmh;
     VIDER_BUFFER;
 
-   if(vitesseKmh < 50 || vitesseKmh > 120)
-   {
-      cout << "Nombre " << vitesseKmh << " est hors champ";
-      return EXIT_FAILURE;
-   }
+    if(vitesseKmh < 50 || vitesseKmh > 120)
+    {
+       cout << "Nombre " << vitesseKmh << " est hors champ";
+       return EXIT_FAILURE;
+    }
 
     cout << left               << setw(nbreCarCommande) << "- depart"
          << right              << setw(nbreCarInterval) << "[0 - 23]"
@@ -126,38 +126,41 @@ int main()
 
 
 
-   //-------------------------------------------------------------------
+    //-------------------------------------------------------------------
     //             Bloc de calcul et affichage ticket final
     //-------------------------------------------------------------------
     //Affichage de la course
 
-    double prixBagage     = nbreBagage * TAXE_DE_BAGAGE;
-    double prixCourse     = (departHeure < 20 ?
-                            8 < departHeure ?
-                            TARIF_MINUTE_JOUR : TARIF_MINUTE_NUIT :
-                            TARIF_MINUTE_NUIT) * ((distanceKm / vitesseKmh) * 60);
-    double total          = prixCourse + prixBagage + PRISE_EN_CHARGE;
-    int    nbreCarTicket  = 20; // plus grand nombre de caractères du ticket.
-    int    nbreCarResult  = 5;  // nombre de caractères pour les totaux.
+        float prixBagage     = nbreBagage * TAXE_DE_BAGAGE;
+        // Opérateur ternaire qui permet de déterminer si l'on est en tarif de
+        // jour ou
+        // de nuit. Le résultat est multiplié par le temps en minutes.
+        float prixCourse       = (departHeure < 20 ?
+                                 8 < departHeure ?
+                                 TARIF_MINUTE_JOUR : TARIF_MINUTE_NUIT :
+                                 TARIF_MINUTE_NUIT) * (distanceKm / vitesseKmh * 60);
+        float total            = prixCourse + prixBagage + PRISE_EN_CHARGE;
+    const int NBRE_CAR_TICKET  = 20; // plus grand nombre de caractères du ticket.
+    const int NBRE_CAR_RESULT  = 5;  // nombre de caractères pour les totaux.
 
-    cout << "Votre ticket"                                 << endl
-         << "============"                                 << endl
+    cout << "Votre ticket"                                  << endl
+         << "============"                                  << endl
          << left
-         << setw(nbreCarTicket)  << "- Prise en charge"
+         << setw(NBRE_CAR_TICKET) << "- Prise en charge"
          << right
-         << setw(nbreCarPoint)   << " : "
-         << setw(nbreCarResult)  << PRISE_EN_CHARGE        << endl
+         << setw(nbreCarPoint)    << " : "
+         << setw(NBRE_CAR_RESULT) << PRISE_EN_CHARGE        << endl
          << left
-         << setw(nbreCarTicket)  << "- supp bagages"
+         << setw(NBRE_CAR_TICKET) << "- supp bagages"
          << right
-         << setw(nbreCarPoint)   << " : "
-         << setw(nbreCarResult)  << prixBagage             << endl
+         << setw(nbreCarPoint)    << " : "
+         << setw(NBRE_CAR_RESULT) << prixBagage             << endl
          << left
-         << setw(nbreCarTicket)  << "- prix de la course"
+         << setw(NBRE_CAR_TICKET) << "- prix de la course"
          << right
-         << setw(nbreCarPoint)   << " : "
-         << setw(nbreCarResult)  << prixCourse             << endl
-         << "TOTAL : "           << total                  << endl
+         << setw(nbreCarPoint)    << " : "
+         << setw(NBRE_CAR_RESULT) << prixCourse             << endl
+         << "TOTAL : "            << total                  << endl
          << endl;
 
     //-------------------------------------------------------------------
